@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace appKaraoke
+namespace appKaraoke.Presentacion
 {
-    public partial class Form1 : Form
+    public partial class Usuarios : Form
     {
-        public Form1()
+        public Usuarios()
         {
             InitializeComponent();
         }
