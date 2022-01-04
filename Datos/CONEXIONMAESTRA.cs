@@ -10,7 +10,7 @@ namespace appKaraoke.Datos
 {
     internal static class CONEXIONMAESTRA
     {
-        public static SqlConnection conexion = new SqlConnection(@"Data source=DESKTOP-VLIVP2S\SQLEXPRESS; Initial Catalog=karaoke_db; Integrated Security=true");
+        public static SqlConnection conexion = new SqlConnection(@"Data source=DESKTOP-VLIVP2S\SQLEXPRESS; Initial Catalog=crudCSharp; Integrated Security=true");
         public static void abrir()
         {
             if (conexion.State == ConnectionState.Closed)
