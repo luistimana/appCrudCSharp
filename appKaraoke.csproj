@@ -44,6 +44,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Datos\CONEXIONMAESTRA.cs" />
+    <Compile Include="Datos\dusuarios.cs" />
+    <Compile Include="Logica\lusuarios.cs" />
     <Compile Include="Presentacion\Usuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,8 +79,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Datos\" />
-    <Folder Include="Logica\" />
+    <None Include="Resources\add_image_96px.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\search_23px.png" />
