@@ -84,5 +84,17 @@
   <ItemGroup>
     <None Include="Resources\search_23px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_file_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_file_96px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8_cancel_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_96px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

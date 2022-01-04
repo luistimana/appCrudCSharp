@@ -33,13 +33,11 @@ namespace appKaraoke.Presentacion
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnInsertar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtBuscador = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataListado = new System.Windows.Forms.DataGridView();
             this.panelUsuario = new System.Windows.Forms.Panel();
-            this.Icono = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textPass = new System.Windows.Forms.TextBox();
             this.textUsuario = new System.Windows.Forms.TextBox();
@@ -49,12 +47,18 @@ namespace appKaraoke.Presentacion
             this.btnGuardarCambios = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.dlg = new System.Windows.Forms.OpenFileDialog();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Icono = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Eliminar = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).BeginInit();
             this.panelUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Icono)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,7 +78,7 @@ namespace appKaraoke.Presentacion
             this.panel2.Controls.Add(this.btnInsertar);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.panel3);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.txtBuscador);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 55);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
@@ -97,17 +101,6 @@ namespace appKaraoke.Presentacion
             this.btnInsertar.UseVisualStyleBackColor = false;
             this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::appKaraoke.Properties.Resources.search_23px;
-            this.pictureBox1.Location = new System.Drawing.Point(419, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(35, 23);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.MediumSeaGreen;
@@ -117,14 +110,15 @@ namespace appKaraoke.Presentacion
             this.panel3.Size = new System.Drawing.Size(400, 1);
             this.panel3.TabIndex = 3;
             // 
-            // textBox1
+            // txtBuscador
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Location = new System.Drawing.Point(16, 12);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 16);
-            this.textBox1.TabIndex = 2;
+            this.txtBuscador.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtBuscador.Location = new System.Drawing.Point(16, 12);
+            this.txtBuscador.Margin = new System.Windows.Forms.Padding(4);
+            this.txtBuscador.Name = "txtBuscador";
+            this.txtBuscador.Size = new System.Drawing.Size(400, 16);
+            this.txtBuscador.TabIndex = 2;
+            this.txtBuscador.TextChanged += new System.EventHandler(this.txtBuscador_TextChanged);
             // 
             // label1
             // 
@@ -140,13 +134,20 @@ namespace appKaraoke.Presentacion
             this.label1.Text = "Usuarios";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dataGridView1
+            // dataListado
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 113);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(241, 260);
-            this.dataGridView1.TabIndex = 1;
+            this.dataListado.AllowUserToAddRows = false;
+            this.dataListado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListado.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Eliminar,
+            this.Editar});
+            this.dataListado.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataListado.Location = new System.Drawing.Point(0, 106);
+            this.dataListado.Name = "dataListado";
+            this.dataListado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataListado.Size = new System.Drawing.Size(1067, 448);
+            this.dataListado.TabIndex = 1;
+            this.dataListado.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListado_CellClick);
             // 
             // panelUsuario
             // 
@@ -160,21 +161,11 @@ namespace appKaraoke.Presentacion
             this.panelUsuario.Controls.Add(this.label3);
             this.panelUsuario.Controls.Add(this.label2);
             this.panelUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panelUsuario.Location = new System.Drawing.Point(276, 113);
+            this.panelUsuario.Location = new System.Drawing.Point(55, 138);
             this.panelUsuario.Name = "panelUsuario";
             this.panelUsuario.Size = new System.Drawing.Size(547, 305);
             this.panelUsuario.TabIndex = 2;
             this.panelUsuario.Visible = false;
-            // 
-            // Icono
-            // 
-            this.Icono.Image = global::appKaraoke.Properties.Resources.add_image_96px;
-            this.Icono.Location = new System.Drawing.Point(143, 138);
-            this.Icono.Name = "Icono";
-            this.Icono.Size = new System.Drawing.Size(100, 98);
-            this.Icono.TabIndex = 5;
-            this.Icono.TabStop = false;
-            this.Icono.Click += new System.EventHandler(this.Icono_Click);
             // 
             // label4
             // 
@@ -240,6 +231,7 @@ namespace appKaraoke.Presentacion
             this.btnGuardarCambios.TabIndex = 7;
             this.btnGuardarCambios.Text = "Guardar Cambios";
             this.btnGuardarCambios.UseVisualStyleBackColor = true;
+            this.btnGuardarCambios.Click += new System.EventHandler(this.btnGuardarCambios_Click);
             // 
             // btnVolver
             // 
@@ -250,10 +242,61 @@ namespace appKaraoke.Presentacion
             this.btnVolver.TabIndex = 8;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // dlg
             // 
             this.dlg.FileName = "openFileDialog1";
+            // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.HeaderText = "Editar";
+            this.dataGridViewImageColumn1.Image = global::appKaraoke.Properties.Resources.edit_file_96px;
+            this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            // 
+            // dataGridViewImageColumn2
+            // 
+            this.dataGridViewImageColumn2.HeaderText = "Eliminar";
+            this.dataGridViewImageColumn2.Image = global::appKaraoke.Properties.Resources.delete_file_96px;
+            this.dataGridViewImageColumn2.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
+            // 
+            // Icono
+            // 
+            this.Icono.Image = global::appKaraoke.Properties.Resources.add_image_96px;
+            this.Icono.Location = new System.Drawing.Point(143, 138);
+            this.Icono.Name = "Icono";
+            this.Icono.Size = new System.Drawing.Size(100, 98);
+            this.Icono.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Icono.TabIndex = 5;
+            this.Icono.TabStop = false;
+            this.Icono.Click += new System.EventHandler(this.Icono_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::appKaraoke.Properties.Resources.search_23px;
+            this.pictureBox1.Location = new System.Drawing.Point(419, 9);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(35, 23);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // Eliminar
+            // 
+            this.Eliminar.HeaderText = "Eliminar";
+            this.Eliminar.Image = global::appKaraoke.Properties.Resources.icons8_cancel_32;
+            this.Eliminar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Eliminar.Name = "Eliminar";
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::appKaraoke.Properties.Resources.edit_96px;
+            this.Editar.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.Editar.Name = "Editar";
             // 
             // Usuarios
             // 
@@ -262,7 +305,7 @@ namespace appKaraoke.Presentacion
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.panelUsuario);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataListado);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -270,14 +313,15 @@ namespace appKaraoke.Presentacion
             this.Name = "Usuarios";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Usuarios_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListado)).EndInit();
             this.panelUsuario.ResumeLayout(false);
             this.panelUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Icono)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -287,11 +331,11 @@ namespace appKaraoke.Presentacion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtBuscador;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnInsertar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataListado;
         private System.Windows.Forms.Panel panelUsuario;
         private System.Windows.Forms.PictureBox Icono;
         private System.Windows.Forms.Label label4;
@@ -303,5 +347,9 @@ namespace appKaraoke.Presentacion
         private System.Windows.Forms.Button btnGuardarCambios;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.OpenFileDialog dlg;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.DataGridViewImageColumn Eliminar;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
     }
 }
